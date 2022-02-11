@@ -1,0 +1,71 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+<ht><br><br><br></ht>
+<div class="container mt-5 mb-5 center">
+    <div class="d-flex justify-content-center row">
+        <div class="col-md-10">
+            <div class="row p-2 bg-white border rounded ">
+{% for article in articles %}
+                <div class="col-md-3 mt-1 left"><img  src="{{article.picture.url}}" width="100" class="rounded-circle"></div>
+                <div class="col-md-6 mt-1 ">
+                    <h5>{{article.title}}</h5>
+                    <div class="d-flex flex-row gap">
+                    <div class="mt-1 mb-1 spec-1"><span>{{article.snippet}}</span></div>
+                </div>
+                <div class="align-items-center align-content-center col-md-3 border-left mt-1">
+                    <div class="d-flex flex-column mt-4"><button class="btn btn-primary btn-sm" type="button"><a href="{% url 'articles:detail' slug=article.sluge %}">Details</a></button>
+
+                        <button class="btn btn-outline-primary btn-sm mt-2" type="button"><a href="{% url 'articles:appointment'  %}">Take Appointment</a></button></div>
+                </div>
+                    <br><br><br>
+</div>
+                <br> <br> <br>
+{% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<style>
+    body{
+     background-image: url("/static/images/doctor.gif");
+       background-repeat: no-repeat;
+        background-size: 1920px 1080px;
+        background-attachment: fixed;
+    }
+
+.product-image {
+    width: 30%;
+
+}
+
+.spec-1 {
+    color: #938787;
+    font-size: 15px;
+    font-variant: small-caps;
+    padding: 10px;
+}
+
+h5 {
+    font-weight: 400;
+    font-size:25px;
+    color: black;
+    font-variant: small-caps;
+}
+.left{
+float: left;
+padding: 20px;
+}
+
+.gap{
+line-height: 1.4;
+}
+
+.center{
+margin: auto;
+width: 50%;
+}
+
+</style>
+{%endblock%}
